@@ -11,7 +11,6 @@ import pymysql
 from typing import Union
 from pydantic import BaseModel
 from datetime import datetime
-
 import os
 from dotenv import load_dotenv
 
@@ -102,7 +101,7 @@ def create_download(item: Download, request: Request):
     cursor.close()
     return {"message": "create download item"}
 
-
+"""
 @app.patch('/{downloadId}')
 def update_download(downloadId: str):
     return {"message": f"update download item with id {downloadId}"}
@@ -121,7 +120,7 @@ def delete_download(downloadId: str):
 @app.get("/download/healthchecker")
 def root():
     return {"message": "Welcome to KITEI - Get Download Boleto info"}
-
+""
 
 if __name__ == '__main__':
     uvicorn.run(app=app, host=SERVER_APP_URL, port=SERVER_APP_PORT)

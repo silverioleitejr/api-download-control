@@ -1,0 +1,7 @@
+heroku config:set SERVER_APP_URL='127.0.0.1' --app api-kitei-ctrl-download
+heroku config:set SERVER_APP_PORT=8000 --app api-kitei-ctrl-download
+heroku config:set DB_SERVER='kiteiboleto.mysql.dbaas.com.br' --app api-kitei-ctrl-download
+heroku config:set DB_PORT=3306 --app api-kitei-ctrl-download
+heroku config:set DB_USER='kiteiboleto' --app api-kitei-ctrl-download
+heroku config:set DB_PWD='Ogun153412#' --app api-kitei-ctrl-download
+heroku config:set DB_NAME='kiteiboleto' --app api-kitei-ctrl-download
