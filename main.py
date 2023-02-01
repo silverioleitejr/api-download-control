@@ -63,21 +63,6 @@ app = FastAPI()
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl="token")
 
 
-@app.get('/')
-def get_downloads(token: str = Depends(oauth2_scheme)):
-    dbcon = open_connection()
-    cursor = dbcon.cursor()
-    cmd = 'SELECT id, dt_download, id_acordo, cd_cedente, nm_cedente, tx_cpf, id_parcela, tx_url ' \
-          'FROM kiteiboleto.download ' \
-          'ORDER BY dt_download , cd_cedente , id_acordo'
-    cursor.execute(cmd)
-    result = cursor.fetchall()
-    print(result)
-    cursor.close()
-    #return {"message": result}
-    return {"token": token}
-
-
 @app.post('/items/', status_code=status.HTTP_201_CREATED)
 def create_download(item: Download, request: Request):
     client_host = request.client.host
@@ -102,6 +87,21 @@ def create_download(item: Download, request: Request):
     return {"message": "create download item"}
 
 """
+@app.get('/')
+def get_downloads(token: str = Depends(oauth2_scheme)):
+    dbcon = open_connection()
+    cursor = dbcon.cursor()
+    cmd = 'SELECT id, dt_download, id_acordo, cd_cedente, nm_cedente, tx_cpf, id_parcela, tx_url ' \
+          'FROM kiteiboleto.download ' \
+          'ORDER BY dt_download , cd_cedente , id_acordo'
+    cursor.execute(cmd)
+    result = cursor.fetchall()
+    print(result)
+    cursor.close()
+    #return {"message": result}
+    return {"token": token}
+
+
 @app.patch('/{downloadId}')
 def update_download(downloadId: str):
     return {"message": f"update download item with id {downloadId}"}
