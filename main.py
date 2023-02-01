@@ -120,7 +120,7 @@ def delete_download(downloadId: str):
 @app.get("/download/healthchecker")
 def root():
     return {"message": "Welcome to KITEI - Get Download Boleto info"}
-""
+"""
 
 if __name__ == '__main__':
     uvicorn.run(app=app, host=SERVER_APP_URL, port=SERVER_APP_PORT)
